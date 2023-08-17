@@ -2,20 +2,32 @@ import React from "react";
 import Header from "./components/Header";
 import Quote from "./components/Quote";
 import Footer from "./components/Footer";
+import "./App.css";
 
 const App = () => {
   const appInfo = {
     title: "Quote of the Day",
-    author: "Your Name",
-    copyright: new Data().getFullYear(),
+    author: "Behnam Arabi",
+    copyright: new Date().getFullYear(),
   };
 
   return (
-    <div>
-      <Header title={appInfo.title} />
-      <Quote />
-      <Footer author={appInfo.author} copyright={appInfo.copyright} />
-    </div>
+    <html>
+      <body>
+        <div id="wrapper">
+          <Header title={appInfo.title} />
+
+          <main>
+            <div>
+              <section>
+                <Quote />
+              </section>
+            </div>
+          </main>
+          <Footer author={appInfo.author} copyright={appInfo.copyright} />
+        </div>
+      </body>
+    </html>
   );
 };
 

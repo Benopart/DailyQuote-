@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import quotes from "../quotes";
 
 const Quote = () => {
-  const [currentQuote, setCurrentQuote] = useState(
-    "Click the button to get a quote."
-  );
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(-1);
   const [previousQuoteIndex, setPreviousQuoteIndex] = useState(-1);
 
   const getRandomQuote = () => {
@@ -13,12 +11,21 @@ const Quote = () => {
       randomIndex = Math.floor(Math.random() * quotes.length);
     }
     setPreviousQuoteIndex(randomIndex);
-    setCurrentQuote(quotes[randomIndex].quote);
+    setCurrentQuoteIndex(randomIndex);
   };
+
+  const currentQuote =
+    currentQuoteIndex !== -1
+      ? quotes[currentQuoteIndex].quote
+      : "Click the button to get a quote!";
+  const currentAuthor =
+    currentQuoteIndex !== -1 ? quotes[currentQuoteIndex].author : "";
 
   return (
     <div>
-      <p>{currentQuote}</p>
+      <p>"{currentQuote}"</p>
+      {currentAuthor && <p> - {currentAuthor}</p>}
+
       <button onClick={getRandomQuote}>Get Quote</button>
     </div>
   );

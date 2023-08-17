@@ -1,12 +1,12 @@
 import React from "react";
 
-const Footer = ({ author, copyright }) => {
+const Footer = ({ developer }) => {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer>
       <p>
-        &copy; {currentYear} {author}
+        &copy; {currentYear} {developer}
       </p>
     </footer>
   );
@@ -14,7 +14,7 @@ const Footer = ({ author, copyright }) => {
 
 Footer.defaultProps = {
   copyright: new Date().getFullYear(),
-  author: "Your Name",
+  developer: "Behnam Arabi",
 };
 
 export default Footer;
