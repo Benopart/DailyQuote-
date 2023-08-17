@@ -366,12 +366,11 @@ input[type="submit"] {
   align-items: center;
 }
 button:hover,
-button:focus,
 input[type="submit"]:hover,
 input[type="submit"]:focus {
   border: solid 3px var(--main-color);
-  background-color: var(--second-color);
-  color: var(--main-color);
+  /* background-color: var(--second-color); */
+  /* color: var(--main-color); */
   cursor: pointer;
 }
 
