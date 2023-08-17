@@ -4,6 +4,8 @@ import quotes from "../quotes";
 const Quote = () => {
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(-1);
   const [previousQuoteIndex, setPreviousQuoteIndex] = useState(-1);
+  const [buttonLabel, setButtonLabel] = useState("Get Quote");
+  const [quoteVisible, setQuoteVisible] = useState(false);
 
   const getRandomQuote = () => {
     let randomIndex = Math.floor(Math.random() * quotes.length);
@@ -12,6 +14,13 @@ const Quote = () => {
     }
     setPreviousQuoteIndex(randomIndex);
     setCurrentQuoteIndex(randomIndex);
+
+    if (!quoteVisible) {
+      setQuoteVisible(true);
+      if (buttonLabel === "Get Quote") {
+        setButtonLabel("Get Another Quote");
+      }
+    }
   };
 
   const currentQuote =
@@ -23,10 +32,23 @@ const Quote = () => {
 
   return (
     <div>
-      <p>"{currentQuote}"</p>
-      {currentAuthor && <p> - {currentAuthor}</p>}
-
-      <button onClick={getRandomQuote}>Get Quote</button>
+      {quoteVisible ? (
+        <blockquote>
+          <p>
+            <strong>{currentQuote}</strong>
+          </p>
+          {currentAuthor && (
+            <footer>
+              <small>~ {currentAuthor} ~</small>
+            </footer>
+          )}
+        </blockquote>
+      ) : (
+        <p>Click the button to get a quote!</p>
+      )}
+      <p>
+        <button onClick={getRandomQuote}>{buttonLabel}</button>
+      </p>
     </div>
   );
 };

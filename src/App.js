@@ -20,11 +20,13 @@ const App = () => {
           <main>
             <div>
               <section>
-                <Quote />
+                <fieldset>
+                  <Quote />
+                </fieldset>
               </section>
             </div>
           </main>
-          <Footer author={appInfo.author} copyright={appInfo.copyright} />
+          <Footer />
         </div>
       </body>
     </html>
